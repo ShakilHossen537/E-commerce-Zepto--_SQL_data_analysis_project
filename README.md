@@ -1,100 +1,209 @@
-🛒 E-commerce Zepto – SQL Data Analysis Project
-📌 Project Overview
+🛒 Zepto E-commerce SQL Data Analyst Portfolio Project
 
-This project focuses on data analysis using SQL based on an e-commerce dataset inspired by Zepto. The goal is to analyze product availability, pricing, and category-level insights using structured SQL queries.
+This is a real-world Data Analyst portfolio project built using an e-commerce inventory dataset from Zepto, one of India’s fastest-growing quick-commerce platforms.
 
-The project simulates how real-world e-commerce platforms manage and analyze large datasets to support business decisions such as pricing strategy, inventory management, and product performance.
+The project simulates how data analysts work in real business environments, from raw data exploration to generating actionable insights using SQL.
 
-📂 Dataset Information
+🎯 Who This Project Is For
 
-The project uses the dataset:
+           📊 Data Analyst aspirants building strong portfolio projects
 
-📄 zepto_v2.csv
+	       📚 Anyone learning SQL through real datasets
 
-This dataset contains information related to products available on the Zepto platform.
+           💼 Candidates preparing for interviews in retail, e-commerce, or product analytics
 
-Key Attributes Include:
 
-Product Name
+📌 Project Objective
 
-Category
+The goal is to replicate real-world analytics workflows used in e-commerce and retail businesses by:
 
-Price
+        •	Setting up a messy, real-world inventory database
+        
+        •	Performing Exploratory Data Analysis (EDA)
+        
+        •	Cleaning inconsistent and invalid data
 
-Availability / Stock Status
 
-Quantity / Weight
+     Writing business-focused SQL queries to uncover insights related to:
 
-Other product-related details
+        o	Pricing
+        
+        o	Inventory
+        
+        o	Stock availability
+        
+        o	Revenue potential
 
-This dataset is used to perform meaningful SQL-based analysis.
 
-🎯 Project Objectives
+📁 Dataset Overview
 
-Analyze product availability and pricing
+The dataset is sourced from Kaggle and originally scraped from Zepto’s official product listings:
 
-Understand category-wise distribution
+                   🔗 https://www.kaggle.com/datasets/palvinder2006/zepto-inventory-dataset/data?select=zepto_v2.csv
 
-Practice SQL queries on a real-world dataset
+Each row represents a unique SKU (Stock Keeping Unit).
 
-Improve data analysis and problem-solving skills
+The same product may appear multiple times due to different sizes, weights, or pricing variations—just like real e-commerce catalogs.
 
-Build a strong SQL portfolio project
+🧾 Columns Explained
 
-🛠️ Tools & Technologies Used
+    •	sku_id – Unique product identifier (Primary Key)
 
-SQL – Querying and data analysis
+    •	name – Product name
 
-CSV Dataset – Data source
+    •	category – Product category (Fruits, Snacks, Beverages, etc.)
 
-MySQL / PostgreSQL / SQLite – Database engines
+    •	mrp – Maximum Retail Price (converted from paise to ₹)
 
-🔍 Sample SQL Queries
-1. View all products
-SELECT * FROM zepto_v2;
+    •	discountPercent – Discount percentage
 
-2. Find products currently in stock
-SELECT *
-FROM zepto_v2
-WHERE availability = 'In Stock';
+    •	discountedSellingPrice – Final selling price in ₹
 
-3. List products by price (low to high)
-SELECT product_name, price
-FROM zepto_v2
-ORDER BY price ASC;
+    •	availableQuantity – Stock count
 
-4. Count total number of products
-SELECT COUNT(*) AS total_products
-FROM zepto_v2;
+    •	weightInGms – Product weight in grams
 
-5. Category-wise product count
-SELECT category, COUNT(*) AS total_products
-FROM zepto_v2
-GROUP BY category;
+    •	outOfStock – Boolean value for availability
 
-📊 Key Insights (Example)
+    •	quantity – Units per package
 
-Identified top product categories by availability
 
-Analyzed pricing distribution across categories
+🔧 Project Workflow
 
-Detected out-of-stock products
+1. Database & Table Creation
+   
+Created a structured SQL table with appropriate data types:
 
-Improved understanding of inventory structure
+                CREATE TABLE zepto (
+                
+                  sku_id SERIAL PRIMARY KEY,
+                  
+                       category VARCHAR(120),
+                  
+                  name VARCHAR(150) NOT NULL,
+                  
+                       mrp NUMERIC(8,2),
+                  
+                  discountPercent NUMERIC(5,2),
+                  
+                       availableQuantity INTEGER,
+                  
+                  discountedSellingPrice NUMERIC(8,2),
+                  
+                     weightInGms INTEGER,
+                  
+                  outOfStock BOOLEAN,
+                  
+                  quantity INTEGER
+                  
+                );
 
-🚀 Future Enhancements
 
-Add customer and order datasets
 
-Perform advanced analytics using JOINs
+2. Data Import
 
-Create dashboards using Power BI or Tableau
+•	Imported the CSV file using MySQL tools
 
-Build a simple frontend interface
+•	Ensured proper encoding (UTF-8)
 
-📁 Project Structure
-E-commerce-Zepto--_SQL_data_analysis_project/
-│
-├── zepto_v2.csv
-├── queries.sql
-└── README.md
+
+
+3. 🔍 Data Exploration
+   
+•	Counted total records
+
+•	Reviewed dataset structure
+
+•	Checked for missing or null values
+
+•	Identified unique product categories
+
+•	Compared in-stock vs out-of-stock products
+
+•	Found duplicate products across multiple SKUs
+
+
+
+4. 🧹 Data Cleaning
+
+•	Removed rows with zero MRP or selling price
+
+•	Converted pricing values from paise to rupees
+
+•	Standardized inconsistent data formats
+
+
+
+5. 📊 Business Insights
+   
+•	Identified top 10 best-value products based on discounts
+
+•	Found high-MRP products currently out of stock
+
+•	Estimated potential revenue per category
+
+•	Filtered premium products (₹500+) with low discounts
+
+•	Ranked top 5 categories with highest average discounts
+
+•	Calculated price per gram for value comparison
+
+•	Grouped products into Low, Medium, and Bulk weight categories
+
+•	Measured total inventory weight per category
+
+
+
+🛠️ How to Use This Project
+
+
+1️⃣ Clone the Repository
+
+                    https://github.com/ShakilHossen537/E-commerce-Zepto--_SQL_data_analysis_project.git
+
+
+2️⃣ Open the SQL File
+
+zepto_SQL_data_analysis.sql includes:
+
+        •	Table creation
+        
+        •	Data exploration
+        
+        •	Cleaning steps
+        
+        •	Business queries
+        
+
+3️⃣ Load the Dataset
+
+•	Create a database
+
+•	Run the SQL file
+
+•	Import the dataset (UTF-8 encoding recommended)
+
+
+
+📜 License
+
+MIT License — feel free to fork, star ⭐, and use it in your portfolio.
+
+
+👨‍💻 About the Author
+
+Hi, I’m Md Shakil Hossen, a Data Analyst and SEO Specialist.
+I simplify complex data problems and turn them into practical insights that help people learn, grow, and get hired.
+
+🚀 Stay Connected
+
+📺 Instagram
+https://www.instagram.com/shakil_seo_expert/
+
+Quick SQL tips, analytics content, and behind-the-scenes learning
+
+💼 LinkedIn
+https://www.linkedin.com/in/md-shakil-hossen-seo-specialist/
+
+Let’s connect and grow professionally
+
